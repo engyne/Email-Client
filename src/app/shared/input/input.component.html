@@ -1,1 +1,34 @@
-<p>input works!</p>
+<div class="field">
+    <label [for]="label">{{ label }}</label>
+    <input [id]="label" [type]="inputType" [formControl]="control">
+
+    <div *ngIf="control.errors && control.dirty && control.touched" class="ui pointing red basic label">
+        <p *ngIf="input.required">Value is required</p>
+
+        <p *ngIf="input.minlength">
+            Value you entered is {{ input.minlength.actualLength }}
+            characters long, but it must be at least
+            {{ input.minlength.requiredLength }} characters
+        </p>
+
+        <p *ngIf="input.maxlength">
+            Value you entered is {{ input.maxlength.actualLength }}
+            characters long, but it must be at least
+            {{ input.maxlength.requiredLength }} characters
+        </p>
+
+        <p *ngIf="input.pattern">
+            Invalid format
+        </p>
+
+        <p *ngIf="input.userNotAvailable">
+            User not available
+        </p>
+        
+        <p *ngIf="input.noConnection">
+            No Connection
+        </p>
+
+    </div>
+
+</div>

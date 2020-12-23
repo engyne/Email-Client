@@ -1,1 +1,28 @@
-<p>signup works!</p>
+<h3>Create an Account</h3>
+<form [formGroup]="authForm" class="ui form" (ngSubmit)="onSubmit()">
+    <app-input
+        label="Username"
+        inputType="text"
+        [control]="authForm.get('username')">
+    </app-input>
+    <!-- {{ authForm.controls.username.errors | json }} -->
+    <app-input
+        label="Password"
+        inputType="password"
+        [control]="authForm.get('password')">
+    </app-input>
+    <!-- {{ authForm.controls.password.errors | json }} -->
+    <app-input
+        label="Password Confirmation"
+        inputType="password"
+        [control]="authForm.get('passwordConfirmation')">
+    </app-input>
+    <!-- {{ authForm.controls.passwordConfirmation.errors | json }} -->
+
+    <button class="ui submit button primary">Submit</button>
+</form>
+
+{{ authForm.errors | json }}
+
+
+<div class="ui loading form"></div>
