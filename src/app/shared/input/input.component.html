@@ -1,4 +1,5 @@
 <div class="field">
+    
     <label [for]="label">{{ label }}</label>
     <input [id]="label" [type]="inputType" [formControl]="control">
 
@@ -24,7 +25,7 @@
         <p *ngIf="input.userNotAvailable">
             User not available
         </p>
-        
+
         <p *ngIf="input.noConnection">
             No Connection
         </p>
