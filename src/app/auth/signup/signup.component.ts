@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { MatchPassword } from '../validators/match-password';
@@ -36,7 +37,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private matchPassword: MatchPassword, 
               private usernameCheck: UniqueUsername,
-              private authService: AuthService
+              private authService: AuthService,
+              private router: Router
               ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,7 @@ export class SignupComponent implements OnInit {
       this.authService.signup(this.authForm.value)
         .pipe(finalize(() => this.showLoader = false))
         .subscribe(
-          () => {},
+          () => this.router.navigateByUrl('/inbox'),
           (error) => this.authForm.setErrors({ unknownError: true })
         );
     }
