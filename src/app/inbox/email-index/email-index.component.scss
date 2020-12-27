@@ -1,0 +1,18 @@
+:host {
+    .item a {
+        color: black;
+    }
+
+    a.active {
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+    }
+
+    a.active:before {
+        content: '>';
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+}
