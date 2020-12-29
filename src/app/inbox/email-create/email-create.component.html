@@ -3,6 +3,6 @@
 </button>
 
 <app-model *ngIf="showModal" (dismiss)="showModal = false">
-    <div modalTitle="Compose"></div>
-    <app-email-form [email]="email"></app-email-form>
+    <div modalTitle>Compose</div>
+    <app-email-form [email]="email" (emailSubmit)="onSubmit($event)"></app-email-form>
 </app-model>
