@@ -10,6 +10,7 @@ import { UniqueUsername } from '../validators/unique-username';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  showLoader = false;
 
   authForm = new FormGroup({
     username: new FormControl('',
@@ -32,8 +33,12 @@ export class SigninComponent implements OnInit {
 
   onSubmit() {
     if (this.authForm.valid) {
+        this.showLoader = true;
         this.authService.signin(this.authForm.value).subscribe({
-          next: () => this.router.navigateByUrl('/inbox'),
+          next: () => {
+            this.showLoader = false;
+            this.router.navigateByUrl('/inbox');
+          },
           error: ({ error }) => {
             if (error.username || error.password) {
               this.authForm.setErrors({ credentials: true });

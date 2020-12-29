@@ -4,7 +4,9 @@
 
 <app-model *ngIf="showModal" (dismiss)="showModal = false">
 
-    <div modalTitle>Reply</div>
+    <div modalTitle>Reply
+        <div *ngIf="showLoader" class="ui loading form"></div>
+    </div>
 
     <app-email-form [email]="email" (emailSubmit)="onSubmit($event)"></app-email-form>
 

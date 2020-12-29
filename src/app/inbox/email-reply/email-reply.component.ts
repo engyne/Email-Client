@@ -8,6 +8,7 @@ import { EmailService } from '../email.service';
   styleUrls: ['./email-reply.component.scss']
 })
 export class EmailReplyComponent implements OnChanges {
+  showLoader = false;
   showModal = false;
   @Input() email: Email;
 
@@ -24,9 +25,13 @@ export class EmailReplyComponent implements OnChanges {
   }
 
   onSubmit(email: Email) {
+    this.showLoader = true;
     this.emailService.sendEmail(email)
       .subscribe(
-        () => this.showModal = false,
+        () => {
+          this.showLoader = false;
+          this.showModal = false;
+        }, 
         (err) => console.log(err)
       );
   }
