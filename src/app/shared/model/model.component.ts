@@ -20,6 +20,7 @@ export class ModelComponent implements OnInit {
   }
 
   onDismiss() {
+    console.log('dismiss')
     this.dismiss.emit()
   }
 
